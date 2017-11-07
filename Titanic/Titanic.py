@@ -212,5 +212,45 @@ for dataset in combine:
     dataset['Fare'] = dataset['Fare'].astype(int)
 train_df = train_df.drop(['FareBand'], axis=1)
 combine = [train_df, test_df]
-# print(train_df.head(10))
+# print(test_df.head(10))
 
+
+X_train = train_df.drop('Survived', axis=1)
+Y_train = train_df['Survived']
+X_test = test_df.drop('PassengerId', axis=1).copy()
+# print(X_train.shape, Y_train.shape, X_test.shape)
+
+
+logreg = LogisticRegression()
+logreg.fit(X_train, Y_train)
+Y_pred = logreg.predict(X_test)
+acc_log = round(logreg.score(X_train, Y_train) * 100, 2)
+print(acc_log)
+
+
+coeff_df = pd.DataFrame(train_df.columns.delete(0))
+coeff_df.columns = ['Feature']
+coeff_df['Correlation'] = pd.Series(logreg.coef_[0])
+# print(coeff_df.sort_values(by='Correlation', ascending=False))
+
+
+randomForest = RandomForestClassifier(n_estimators=100)
+randomForest.fit(X_train, Y_train)
+Y_pred = randomForest.predict(X_test)
+# randomForest.score(X_train, Y_train)
+acc_randomForest = round(randomForest.score(X_train, Y_train) * 100, 2)
+print(acc_randomForest)
+
+
+decisionTree = DecisionTreeClassifier()
+decisionTree.fit(X_train, Y_train)
+Y_pred = decisionTree.predict(X_test)
+acc_decisionTree = round(decisionTree.score(X_train, Y_train) * 100, 2)
+print(acc_decisionTree)
+
+submission = pd.DataFrame({
+    'PassengerId': test_df['PassengerId'],
+    "Survived": Y_pred
+})
+print(submission)
+submission.to_csv('./data/submission.csv', index=False)
