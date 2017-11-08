@@ -53,9 +53,9 @@ combine = [train_df, test_df]
 # print(train_df[['Parch', 'Survived']].groupby(['Parch'], as_index=False).mean().sort_values(by='Survived', ascending=False))
 
 
-# g = sns.FacetGrid(train_df, col='Survived')
-# g.map(plt.hist, 'Age', bins=20)
-# plt.savefig('age.png')
+g = sns.FacetGrid(train_df, col='Survived')
+g.map(plt.hist, 'Age', bins=20)
+plt.savefig('age_0.png')
 
 
 """
