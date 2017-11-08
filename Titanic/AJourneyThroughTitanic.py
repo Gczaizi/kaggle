@@ -12,12 +12,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set_style('whitegrid')
 
-from sklearn.linear_model import LogisticRegression  # 逻辑回归
+from sklearn.linear_model import LogisticRegression # 逻辑回归
 from sklearn.svm import SVC, LinearSVC              # 支持向量机
-from sklearn.ensemble import RandomForestClassifier  # 随即森林
+from sklearn.ensemble import RandomForestClassifier # 随即森林
 from sklearn.neighbors import KNeighborsClassifier  # K 近邻
 from sklearn.naive_bayes import GaussianNB          # 朴素贝叶斯
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier     # 决策树
 
 
 # 获取训练集和测试集
