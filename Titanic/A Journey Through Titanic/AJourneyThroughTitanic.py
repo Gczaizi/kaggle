@@ -222,4 +222,4 @@ submission = pd.DataFrame({
         "PassengerId": test_df["PassengerId"],
         "Survived": Y_pred
     })
-submission.to_csv('./data/submission_4.csv', index=False)
+submission.to_csv('../data/submission_4.csv', index=False)

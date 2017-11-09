@@ -253,4 +253,4 @@ submission = pd.DataFrame({
     "Survived": Y_pred
 })
 print(submission)
-submission.to_csv('./data/submission.csv', index=False)
+submission.to_csv('../data/submission.csv', index=False)
