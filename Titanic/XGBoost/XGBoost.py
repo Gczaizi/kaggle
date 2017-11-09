@@ -11,6 +11,7 @@ train_df = pd.read_csv('../data/train.csv')
 test_df = pd.read_csv('../data/test.csv')
 
 
+# 填充空值，用中位数填充数值型空值，用众数填充字符型空值
 from sklearn.base import TransformerMixin
 class DataFrameImputer(TransformerMixin):
     def fit(self, X, y=None):
@@ -24,10 +25,10 @@ class DataFrameImputer(TransformerMixin):
 
 train_df['Family'] = train_df['Parch'] + train_df['SibSp']
 test_df['Family'] = test_df['Parch'] + test_df['SibSp']
-print(train_df.loc[:,['Family','Parch','SibSp']])
+# print(train_df.loc[:,['Family','Parch','SibSp']])
 
-feature_columns_to_use = ['Pclass', 'Age', 'Sex', 'Fare', 'Family']
-nonnumeric_columns = ['Sex']
+feature_columns_to_use = ['Pclass', 'Age', 'Sex', 'Fare', 'Family', 'Embarked']
+nonnumeric_columns = ['Sex', 'Embarked']
 
 
 big_X = train_df[feature_columns_to_use].append(test_df[feature_columns_to_use])
@@ -54,5 +55,5 @@ submission = pd.DataFrame({
     'PassengerId': test_df['PassengerId'],
     "Survived": Y_pred
 })
-print(submission.head())
-submission.to_csv('../data/submission_6.csv', index=False)
+# print(submission.head())
+submission.to_csv('../submission/submission_7.csv', index=False)
