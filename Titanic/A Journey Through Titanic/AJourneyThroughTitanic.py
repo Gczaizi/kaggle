@@ -21,8 +21,8 @@ from sklearn.tree import DecisionTreeClassifier     # 决策树
 
 
 # 获取训练集和测试集
-train_df = pd.read_csv('./data/train.csv')
-test_df = pd.read_csv('./data/test.csv')
+train_df = pd.read_csv('../data/train.csv')
+test_df = pd.read_csv('../data/test.csv')
 # 预览数据集
 # print(train_df.head())
 # print(train_df.info())

@@ -25,8 +25,8 @@ from sklearn.linear_model import SGDClassifier
 from sklearn.tree import DecisionTreeClassifier
 
 
-train_df = pd.read_csv('./data/train.csv')
-test_df = pd.read_csv('./data/test.csv')
+train_df = pd.read_csv('../data/train.csv')
+test_df = pd.read_csv('../data/test.csv')
 combine = [train_df, test_df]
 
 
