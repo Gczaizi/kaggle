@@ -5,7 +5,7 @@
 import pandas as pd
 import numpy as np
 import random as rnd
-
+import xgboost as xgb
 
 # visualization
 import matplotlib
@@ -253,4 +253,9 @@ submission = pd.DataFrame({
     "Survived": Y_pred
 })
 print(submission)
-submission.to_csv('../data/submission.csv', index=False)
+
+gbm = xgb.XGBClassifier(max_depth=3, n_estimators=300, learning_rate=0.05)
+gbm.fit(X_train, Y_train)
+Y_pred = gbm.predict(X_test)
+print(gbm.score(X_train, Y_train))
+# submission.to_csv('../data/submission.csv', index=False)
