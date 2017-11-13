@@ -248,14 +248,16 @@ Y_pred = decisionTree.predict(X_test)
 acc_decisionTree = round(decisionTree.score(X_train, Y_train) * 100, 2)
 print(acc_decisionTree)
 
-submission = pd.DataFrame({
-    'PassengerId': test_df['PassengerId'],
-    "Survived": Y_pred
-})
-print(submission)
 
 gbm = xgb.XGBClassifier(max_depth=3, n_estimators=300, learning_rate=0.05)
 gbm.fit(X_train, Y_train)
 Y_pred = gbm.predict(X_test)
 print(gbm.score(X_train, Y_train))
-# submission.to_csv('../data/submission.csv', index=False)
+
+
+submission = pd.DataFrame({
+    'PassengerId': test_df['PassengerId'],
+    "Survived": Y_pred
+})
+# print(submission)
+submission.to_csv('../submission/submission_8.csv', index=False)
